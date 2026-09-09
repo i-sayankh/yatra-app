@@ -1,4 +1,6 @@
 from fastapi import FastAPI
+from routes.planner_router import planner_router
+from routes.stream_router import stream_router
 
 app = FastAPI(
     title="Yatra Planner API",
@@ -19,3 +21,7 @@ async def root():
             "DELETE /plan/cache": "Clear Cache for travel plans",
         },
     }
+
+
+app.include_router(planner_router)
+app.include_router(stream_router)
